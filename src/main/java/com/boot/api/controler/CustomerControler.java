@@ -1,0 +1,60 @@
+package com.boot.api.controler;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.boot.api.dao.CustomerDao;
+import com.boot.api.model.Agent;
+import com.boot.api.model.Customer;
+
+@RestController
+@RequestMapping("/api")
+public class CustomerControler {
+
+	@Autowired
+	private CustomerDao custdao;
+	
+	//get all agent
+		@GetMapping("/customer")
+		public List<Customer> Allcustomer(){
+			List<Customer> getallcustomer = this.custdao.getallcustomer();
+			return getallcustomer;
+		}
+		//get single Customer
+		@GetMapping("/customer/{id}")
+		public Customer myacustomer(@PathVariable("id") int id){
+			 
+			return this.custdao.getcustomer(id);
+		}
+		
+		//save an customer
+		@PostMapping("/customer")
+		public Customer savecustomer(@RequestBody  Customer customer) {
+			
+			Customer savecust = this.custdao.savecustomer(customer);
+			return savecust;
+		}
+
+		//delete an customer
+		@DeleteMapping("/customer/{id}")
+		public void deletcustomer(@PathVariable("id") int id) {
+			this.custdao.delet(id);	
+		}
+		//update an customer
+		@PutMapping("/customer/{id}")
+		public void editcustomer(@RequestBody Customer customer,@PathVariable("id") int id) {
+			
+			this.custdao.updatecustomer(customer, id);
+		}
+			
+}
