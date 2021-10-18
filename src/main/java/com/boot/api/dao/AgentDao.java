@@ -27,6 +27,12 @@ public class AgentDao {
 		return this.repo.findById(id);
 	}
 	
+	//get  agent by email
+	public Agent getAgentByEmail(String email) {
+		Agent agentByEmail = this.repo.getAgentByAgentEmail(email);
+		return agentByEmail;
+	}
+	
 	//create a agent
 	public Agent saveagent(Agent agent) {
 		Agent save = this.repo.save(agent);

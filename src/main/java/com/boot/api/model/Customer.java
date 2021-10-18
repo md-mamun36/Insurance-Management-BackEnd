@@ -30,7 +30,9 @@ public class Customer {
 	private String prim_method;
 	private int payed_prim;
 	private double account;
+	private int policyAmount;
 	private String position;
+	private String role;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Agent agent;
@@ -162,13 +164,23 @@ public class Customer {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Customer [custid=" + custid + ", custname=" + custname + ", custaddress=" + custaddress
-				+ ", custnumber=" + custnumber + ", custgender=" + custgender + ", policytype=" + policytype
-				+ ", custpassword=" + custpassword + ", custemail=" + custemail + ", duration=" + duration
-				+ ", prim_method=" + prim_method + ", payed_prim=" + payed_prim + ", account=" + account + ", position="
-				+ position + ", agent=" + agent + "]";
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
+	public int getPolicyAmount() {
+		return policyAmount;
+	}
+
+
+	public void setPolicyAmount(int policyAmount) {
+		this.policyAmount = policyAmount;
 	}
 
 

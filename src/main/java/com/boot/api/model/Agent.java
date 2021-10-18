@@ -10,9 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -31,6 +28,7 @@ public class Agent {
 	private int  agent_customer;
 	private double primium_bonus;
 	private String position;
+	private String role;
 	
 	@OneToMany(mappedBy = "agent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -125,6 +123,18 @@ public class Agent {
 
 	public void setPrimium_bonus(double primium_bonus) {
 		this.primium_bonus = primium_bonus;
+	}
+
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 

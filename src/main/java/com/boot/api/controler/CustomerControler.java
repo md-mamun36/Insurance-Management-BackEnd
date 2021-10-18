@@ -37,6 +37,20 @@ public class CustomerControler {
 			return this.custdao.getcustomer(id);
 		}
 		
+		@GetMapping("/mycustomer/{email}")
+		public Customer myCustomer(@PathVariable("email") String email) {
+			
+			return this.custdao.getcustomerByemail(email);
+		}
+		
+		
+		//get single Customer by agent
+		@GetMapping("/customerbyagent/{id}")
+		public List <Customer> customerbyagent(@PathVariable("id") int id){
+			List<Customer> customerbyagent = this.custdao.customerbyagent(id);
+			return customerbyagent;
+		}
+		
 		//save an customer
 		@PostMapping("/customer")
 		public Customer savecustomer(@RequestBody  Customer customer) {

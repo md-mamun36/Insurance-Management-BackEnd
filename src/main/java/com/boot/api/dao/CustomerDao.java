@@ -1,11 +1,11 @@
 package com.boot.api.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.boot.api.model.Agent;
 import com.boot.api.model.Customer;
 import com.boot.api.repository.CustomerRepo;
 
@@ -31,6 +31,19 @@ public class CustomerDao {
 		public Customer getcustomer(int id){
 			 
 			return this.custrepo.findByCustid(id);
+		}
+		
+		//get single customer
+		public Customer getcustomerByemail(String email){
+			 
+			return this.custrepo.getCustomerByCustEmail(email);
+		}
+		
+		//get single customer using agent id
+		public List <Customer> customerbyagent(int id){
+//			List<Customer> findbyagent=new ArrayList<>();
+			List<Customer> findByAgentId = custrepo.findByAgentId(id);
+			return findByAgentId;
 		}
 		
 		//create a customer
